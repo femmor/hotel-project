@@ -1,8 +1,52 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+// Images
+import logo from "../images/logo.svg";
+
+// React Icon
+import { FaAlignRight } from "react-icons/fa";
 
 class Navbar extends Component {
+  state = {
+    isOpen: false
+  };
+
+  handleToggle = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+
   render() {
-    return <div>Hello from Navbar</div>;
+    return (
+      <nav className="navbar">
+        <div className="nav-center">
+          <div className="nav-header">
+            <Link to="/">
+              <img src={logo} alt="" />
+            </Link>
+            <button
+              className="nav-btn"
+              type="button"
+              onClick={this.handleToggle}
+            >
+              <FaAlignRight className="nav-icon" />
+            </button>
+          </div>
+          <ul
+            className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}
+          >
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/rooms">Rooms</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    );
   }
 }
 
