@@ -31,7 +31,6 @@
 import React from "react";
 import RoomFilter from "./RoomFilter.jsx";
 import RoomList from "./RoomList";
-import Title from "../components/Title";
 import { withRoomConsumer } from "../context";
 import Loading from "./Loading";
 
@@ -41,11 +40,10 @@ function RoomContainer({ context }) {
     return <Loading />;
   }
   return (
-    <section className="roomslist">
-      <Title title="Search Rooms" />
+    <>
       <RoomFilter rooms={rooms} />
       <RoomList rooms={sortedRooms} />
-    </section>
+    </>
   );
 }
 
